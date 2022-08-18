@@ -47,14 +47,14 @@ const submit = handleSubmit((value) => {
     uploadImageCompleted((res)=>{
   if (res.data.upLoadImage.url && !res.data.upLoadImage.error) {
         updateAdminMutate({
-          first_name: value.Fname,
-          profile_image: res.data.upLoadImage.url,
-          last_name: value.Lname,
+          Fname: value.Fname,
+          image: res.data.upLoadImage.url,
+          Lname: value.Lname,
           email: value.email,
           status: value.status,
           phone: value.phone,
           address: value.address,
-          about: value.bio,
+          About: value.bio,
           id: user_id.value,
         })
       }
