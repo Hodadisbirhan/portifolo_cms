@@ -6,7 +6,7 @@ export default defineEventHandler( async (event)=>{
 if(normal)
 {
 
-    return {url:"",error:"Error"};
+    
     const body = await useBody(event);
 const name = body.input.value.name;
 const image = body.input.value.base64;
