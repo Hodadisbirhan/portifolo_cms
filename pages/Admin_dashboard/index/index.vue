@@ -123,6 +123,7 @@ console.log(error);
 profileUpdateError((error)=>{
  message.value = "Not submited Please try Again";
         buttonLoading.value = false;
+        console.log(error);
 })
 
 const clear = () => {
