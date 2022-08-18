@@ -69,7 +69,7 @@ const submit = handleSubmit((value) => {
     
   } else {
     updateAdminMutate({
-      frst_name: value.Fname,
+      first_name: value.Fname,
       profile_image: image.value,
       last_name: value.Lname,
       email: value.email,
