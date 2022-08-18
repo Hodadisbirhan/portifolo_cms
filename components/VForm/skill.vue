@@ -15,6 +15,7 @@ emits('close');
 }
 const {mutate:addSkill,onDone:addSkillCompleted} =useMutation(insertSkill);
 const {mutate:updateSkill,onDone:updateSkillCompleted} = useMutation(updateSkillById)
+const level_of_skill = ref(props.level);
 const whatTodo = computed(()=>{
     if(props.taskType==="Edit")
     {
@@ -34,16 +35,21 @@ setFieldValue("name",props.name);
 const submit = handleSubmit((value)=>{
     if(props.taskType==="Edit")
     {
-updateSkill({name:value.name,level:props.level,id:props.id});
+updateSkill({name:value.name,level:level_of_skill,id:props.id});
     }
     else
     {
-addSkill({name:value.name,level:props.level,user_id:"6807e331-fecd-46ee-b3fd-108a67ab8322"})
+addSkill({name:value.name,level:level_of_skill,user_id:"6807e331-fecd-46ee-b3fd-108a67ab8322"})
 
     }
 
 })
 
+
+watchEffect(()=>{
+
+  level_of_skill.value = props.level;   
+})
 
 updateSkillCompleted((res)=>{
 emits('showChange');
@@ -62,7 +68,7 @@ addSkillCompleted((res)=>{
     <h2 class="text-title text-xl font-semibold">{{title}}</h2>
 <field-v-input-field type="text"  rule="required"  name="name" label="Skill Name" placeholder="Skill Name e.g vujs"/> 
 <div class="flex gap-1 w-full items-center">
-<input type="range"  class="w-full h-2 accent-activeNavLinkColor appearance-none bg-primary"  v-model="level" name="level" label="Label" /> <span class="text-primary text-sm ">{{level}}%</span> </div>
+<input type="range"  class="w-full h-2 accent-activeNavLinkColor appearance-none bg-primary"  v-model="level_of_skill" name="level" label="Label" /> <span class="text-primary text-sm ">{{level_of_skill}}%</span> </div>
     <div class="w-full justify-center items-center flex gap-4 "><v-button-solid type="submit" class="  px-2  xs:w-[10rem]" :value="whatTodo"/>
 </div>
 </form>
