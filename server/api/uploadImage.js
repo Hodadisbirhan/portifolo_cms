@@ -2,9 +2,11 @@ import imgbbuploader from "imgbb-uploader";
 import {secureAction} from "./secureAuthenticate"
 export default defineEventHandler( async (event)=>{
     const {normal} =  secureAction({action_secret_key:event.req.headers.action_secret_key});
+    
 if(normal)
 {
 
+    return {url:"",error:"Error"};
     const body = await useBody(event);
 const name = body.input.value.name;
 const image = body.input.value.base64;
