@@ -45,7 +45,7 @@ const submit = handleSubmit((value) => {
     loading.value = true;
     ImageUpload(uplaodedImage.value);
 uploadedImageCompleted((res)=>{
-  console.log(res.data.upLoadImage)
+  
    if (res.data.upLoadImage.url && !res.data.upLoadImage.error)
    {
      updateServiceById({
@@ -80,14 +80,18 @@ addServiceIsDone((res)=>{
             }
             loading.value = false;
             showMessage.value ="please try again"
+            
 
-}) 
+}
+
+) 
 
 uploadedImageError((error)=>{
   loading.value=false;
   showMessage.value ="Image Uploaded Error Please try again"
 })
 addServiceError((error)=>{
+  console.log(error);
 loading.value=false;
 showMessage.value ="some Error please try again"
 
