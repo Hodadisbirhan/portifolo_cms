@@ -118,7 +118,7 @@ profileUpdateCompleted((res)=>{
 imageUploadError((error)=>{
 buttonLoading.value = false;
 message.value = "upload Image Error";
-
+console.log(error);
 })
 profileUpdateError((error)=>{
  message.value = "Not submited Please try Again";
