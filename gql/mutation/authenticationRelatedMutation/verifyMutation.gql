@@ -1,0 +1,6 @@
+mutation verifyMutation($email:String!,$code:String!){
+  verify(value:{email:$email,verifyCode:$code})
+  {
+    status
+  }
+}

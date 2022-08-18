@@ -1,0 +1,9 @@
+mutation resetAction($email:String!,$password:String!)
+{
+resetPassword(value:{email:$email,password:$password})
+  {
+    email
+    status
+  }
+  
+}

@@ -1,0 +1,7 @@
+mutation InviteLogin($email: String!, $code: String!) {
+    inviteLogin(value: { code: $code, email: $email }) {
+     accessToken
+      message
+      status
+    }
+  }
