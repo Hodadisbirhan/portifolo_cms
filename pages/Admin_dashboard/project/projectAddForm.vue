@@ -90,6 +90,7 @@ loading.value = false;
 addNewProjectError((error)=>{
 showMessage.value="some error happend try again";
 loading.value = false;
+console.log(error)
 
 })
 
