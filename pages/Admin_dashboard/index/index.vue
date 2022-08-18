@@ -69,14 +69,14 @@ const submit = handleSubmit((value) => {
     
   } else {
     updateAdminMutate({
-      first_name: value.Fname,
-      profile_image: image.value,
-      last_name: value.Lname,
+      Fname: value.Fname,
+      image: image.value,
+      Lname: value.Lname,
       email: value.email,
       status: value.status,
       phone: value.phone,
       address: value.address,
-      about: value.bio,
+      About: value.bio,
       id: user_id.value,
     })
     
