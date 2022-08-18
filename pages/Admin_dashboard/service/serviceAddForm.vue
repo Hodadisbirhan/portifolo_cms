@@ -93,7 +93,7 @@ uploadedImageError((error)=>{
 addServiceError((error)=>{
   console.log(error);
 loading.value=false;
-showMessage.value ="some Error please try again"
+showMessage.value ="Error please try again !!!"
 
 })
 
