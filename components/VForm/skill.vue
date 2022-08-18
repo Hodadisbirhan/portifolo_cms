@@ -35,11 +35,11 @@ setFieldValue("name",props.name);
 const submit = handleSubmit((value)=>{
     if(props.taskType==="Edit")
     {
-updateSkill({name:value.name,level:level_of_skill,id:props.id});
+updateSkill({name:value.name,level:level_of_skill.value,id:props.id});
     }
     else
     {
-addSkill({name:value.name,level:level_of_skill,user_id:"6807e331-fecd-46ee-b3fd-108a67ab8322"})
+addSkill({name:value.name,level:level_of_skill.value,user_id:"6807e331-fecd-46ee-b3fd-108a67ab8322"})
 
     }
 
