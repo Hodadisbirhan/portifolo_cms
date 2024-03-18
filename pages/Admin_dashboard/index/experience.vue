@@ -4,6 +4,7 @@ import {
   PencilIcon,
   BriefcaseIcon,
   PlusIcon,
+  CalendarIcon,
 } from "@heroicons/vue/solid";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 import { deleteExperience } from "~~/gql/mutation";
@@ -66,6 +67,40 @@ onDone((res) => {
     fetchMore({ variables: {} });
   }
 });
+
+const getYearMonth = (value) => {
+  // Assuming you have the date as a string
+  if (!value) {
+    return "Present";
+  }
+  const dateString = value;
+
+  // Convert string to Date object
+  const dateObject = new Date(dateString);
+
+  // Get month and year as text
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthText = monthNames[dateObject.getMonth()]; // Month in text format
+  const year = dateObject.getFullYear(); // Year
+
+  // Concatenate month and year
+  const result = `${monthText} ${year}`;
+
+  return result; // Output: March 2024
+};
 </script>
 <template>
   <div class="w-full">
@@ -94,7 +129,16 @@ onDone((res) => {
               {{ item.name }}-{{ item.position }}
             </h1>
             <p class="text-xs text-bodyText">{{ item.description }}</p>
-            <span>{{ item.start_date }} - {{ item.end_date }}</span>
+
+            <div class="flex gap-5 items-center text-primary/80">
+              <CalendarIcon
+                class="text-sm min-w-[1rem] w-[1rem] h-[1.2rem] text-primary" />
+              <span class="text-xs font-medium"
+                >{{ getYearMonth(item.start_date) }}-{{
+                  getYearMonth(item.end_date)
+                }}</span
+              >
+            </div>
           </div>
         </div>
 

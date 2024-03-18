@@ -37,24 +37,27 @@ export default defineNuxtPlugin((nuxtApp) => {
   });
 
   defineRule("date", (value) => {
-    let dateArray = (value + "").split("-");
-    const month = dateArray[1];
-    const day = dateArray[2];
-    const year = dateArray[0];
-    const nowYear = new Date().getFullYear();
-    const getmonth = new Date().getMonth() + 1;
-    
-    if (nowYear.toString() > year) {
+    if (value) {
+      const end_date = new Date(value);
+      const currentDate = new Date();
+      if (currentDate >= end_date) {
+        return true;
+      } else return "date is out of range";
+    }
+  });
+
+  defineRule("end_date", (value, [target], ctx) => {
+    if (!ctx.form[target]) {
+      return "end date must greater than start date";
+    } else if (!value) {
       return true;
-    } else if (nowYear.toString() < year) {
-      return "date is out of now ";
-    } else if (month.toString() < getmonth) {
-      return true;
-    } else if (
-      month.toString() == getmonth &&
-      day.toString() <= new Date().getDay()+7
-    ) {
-      return true;
-    } else return "date is out of now";
+    } else {
+      const end_date = new Date(value);
+      const start_date = new Date(ctx.form[target]);
+
+      if (start_date >= end_date) {
+        return "end date must greater than start date";
+      } else return true;
+    }
   });
 });

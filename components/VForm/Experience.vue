@@ -102,12 +102,13 @@ EditCompleted((res) => {
     <div class="flex gap-3 w-full">
       <field-v-input-field
         type="date"
-        rule="required"
+        rule="required|date"
         name="start_date"
         label="Start Date" />
 
       <field-v-input-field
         type="date"
+        rule="date|end_date"
         name="end_date"
         label="End Date" />
     </div>

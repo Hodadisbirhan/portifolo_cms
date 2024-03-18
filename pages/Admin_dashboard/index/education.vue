@@ -66,7 +66,7 @@ const deleteEducationById = (id) => {
   showDelete();
 };
 
-const getYearMonth = computed((value) => {
+const getYearMonth = (value) => {
   // Assuming you have the date as a string
   if (!value) {
     return "Present";
@@ -97,8 +97,8 @@ const getYearMonth = computed((value) => {
   // Concatenate month and year
   const result = `${monthText} ${year}`;
 
-  console.log(result); // Output: March 2024
-});
+  return result; // Output: March 2024
+};
 </script>
 <template>
   <div class="w-full">
@@ -117,8 +117,9 @@ const getYearMonth = computed((value) => {
           <p class="text-xs truncate w-[95%] text-bodyText">
             {{ item.description }}
           </p>
-          <div class="flex gap-5">
-            <CalendarIcon class="text-sm" />
+          <div class="flex gap-5 items-center text-primary/80">
+            <CalendarIcon
+              class="text-sm min-w-[1rem] w-[1rem] h-[1.2rem] text-primary" />
             <span class="text-xs font-medium"
               >{{ getYearMonth(item.start_date) }}-{{
                 getYearMonth(item.end_date)
