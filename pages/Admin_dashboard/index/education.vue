@@ -1,5 +1,10 @@
 <script setup>
-import { TrashIcon, PencilIcon, PlusIcon } from "@heroicons/vue/solid";
+import {
+  TrashIcon,
+  PencilIcon,
+  PlusIcon,
+  CalendarIcon,
+} from "@heroicons/vue/solid";
 import { fetchEducation } from "@/gql/query";
 import { deleteEducation } from "~~/gql/mutation";
 import { useMutation, useQuery } from "@vue/apollo-composable";
@@ -60,6 +65,40 @@ const deleteEducationById = (id) => {
   deleted_id.value = id;
   showDelete();
 };
+
+const getYearMonth = computed((value) => {
+  // Assuming you have the date as a string
+  if (!value) {
+    return "Present";
+  }
+  const dateString = value;
+
+  // Convert string to Date object
+  const dateObject = new Date(dateString);
+
+  // Get month and year as text
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const monthText = monthNames[dateObject.getMonth()]; // Month in text format
+  const year = dateObject.getFullYear(); // Year
+
+  // Concatenate month and year
+  const result = `${monthText} ${year}`;
+
+  console.log(result); // Output: March 2024
+});
 </script>
 <template>
   <div class="w-full">
@@ -78,7 +117,14 @@ const deleteEducationById = (id) => {
           <p class="text-xs truncate w-[95%] text-bodyText">
             {{ item.description }}
           </p>
-          <span>{{ item.start_date }}-{{ item.end_date }}</span>
+          <div class="flex gap-5">
+            <CalendarIcon class="text-sm" />
+            <span class="text-xs font-medium"
+              >{{ getYearMonth(item.start_date) }}-{{
+                getYearMonth(item.end_date)
+              }}</span
+            >
+          </div>
         </div>
         <div class="flex flex-col h-full pt-2 gap-5">
           <PencilIcon
