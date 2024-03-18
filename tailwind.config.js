@@ -16,11 +16,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#0D47A1",
+        primary: "#1e3a8a",
         title: "#0F172A",
         body: "#F4ECEC",
         bodyText: "#475569",
-        activeNavLinkColor: "#0099CC",
+        activeNavLinkColor: "#2563eb",
       },
       fontFamily: {
         body: ['"Work Sans"', '"sans-serif"'],

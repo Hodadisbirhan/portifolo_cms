@@ -26,6 +26,7 @@
     "imgbb": "^1.0.48",
     "imgbb-uploader": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
+    "tslib": "^2.6.2",
     "vee-validate": "^4.6.2",
     "vite-svg-loader": "^3.4.0",
     "vue-apollo": "^3.1.0"
