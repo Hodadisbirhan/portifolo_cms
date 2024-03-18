@@ -43,6 +43,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (currentDate >= end_date) {
         return true;
       } else return "date is out of range";
+    } else {
+      return true;
     }
   });
 
