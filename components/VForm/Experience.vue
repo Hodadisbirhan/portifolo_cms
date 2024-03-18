@@ -108,7 +108,7 @@ EditCompleted((res) => {
 
       <field-v-input-field
         type="date"
-        rule="date|end_date"
+        rule="date|end_date:start_date"
         name="end_date"
         label="End Date" />
     </div>
